@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Kullanıcı Tanımlı İki Matrisin Çarpımı
-// www.tarikbahar.com
 
 //Öncelikle bu kısımda matrislerimizin boyutlarını belirleyelim.
 //Matrislerimizin boyutlarını a[M][N] ve b[N][P] olacak şekilde atama yapıyoruz.
