@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define M 2  //BİRİNCİ matrisin SATIR sayısı
+#define N 3  //BİRİNCİ matrisin SÜTUN ve İKİNCİ matrisin SATIR sayısı
+#define P 2  //İKİNCİ matrisin SÜTUN sayısı
+
+int main() {
+
+	 int a[10][10],b[10][10],c[10][10]={ },i,j,k; //Değişkenlerimizi ve matrislerimizi tanımladık.
+						//Matris dizimizin içini boş bıraktık. Çünkü bu kısmı aşağıda dolduracağız.
+
+    printf ("Birinci Matris:\n \n");    //İlk matrisimizi kullanıcıdan alalım.
+
+    for (i = 0; i < M; i++)  //İlk döngü satır,
+	{
+    	for (j = 0; j < N; j++)  //İkinci döngü sütunu tanımlıyor.
+		{
+
+        printf ("a[%d][%d]: ",i+1,j+1);
+        scanf ("%d", &a[i][j]);
+   		 }
+    }
+
+  printf ("\nOlusan Matris: \n");   //Matrisi görmek adına ekrana bastıralım.
+  for (i = 0; i < M; i++)
+  {
+    for (j = 0; j < N; j++)
+	{
+
+        printf("%5d",a[i][j]);
+
+
+    }printf("\n\n");
+  }
+
+
+
+    printf ("\n\nIkinci Matris: \n \n");   //Aynı işlemleri ikinci matrisimiz için yapıyoruz.
+
+    for (j = 0; j < N; j++)
+	{
+   		 for (k = 0; k < P; k++)
+		{
+
+        printf ("b[%d][%d]: ",j+1,k+1);
+        scanf ("%d", &b[j][k]);
+	    }
+	}
+
+    printf ("\nOlusan Matris: \n");
+
+  for (j = 0; j < N; j++)
+  {
+
+    for (k = 0; k < P; k++)
+	{
+
+
+        printf("%5d",b[j][k]);
+
+
+    }printf("\n\n");
+
+    }
+
+
+//Bu kısımda çarpma işlemi başlıyor.
+static int sayac=0;
+    for (i = 0; i < M; i++)
+	{
+    	for (j = 0; j < P; j++)
+		{
+    		for (k = 0; k < N; k++){
+
+                sayac=sayac+1;
+                 c[i][j] += a[i][k] * b[k][j];
+    		}
+
+
+
+   		 }
+
+        printf("\n");
+    }
+    printf("\nkarmasiklik : %d\n",sayac);
+
+
+    printf ("Sonuc Matrisi:\n");
+
+    for (i = 0; i < M; i++)
+	{
+    	for (k = 0; k < P; k++)
+
+        printf ("\t%d",c[i][k]);
+
+        printf ("\n");
+    }
+
+    getch();
+    return 0;
+}
+
