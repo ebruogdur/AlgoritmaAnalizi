@@ -1,0 +1,129 @@
+
+package matrix;
+ import java.util.Random;
+
+public class Matrix {
+
+    public static void main(String[] args) 
+    {
+        
+        Random r=new Random();
+        int [][]m=new int[3][3];
+         
+        int sonuc[][]=new int[3][1];
+        int bilinmeyen[][]=new int[3][1];
+        
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<1;j++)
+            {
+              sonuc[i][j]=1;  
+
+            }
+            
+        }
+        System.out.print("\nSonuc \n");
+          for(int row=0; row<3; row++)
+        {
+            for(int column=0; column<1; column++)
+            {
+                System.out.printf("%3d",sonuc[row][column]);
+            }
+            System.out.print("\n");
+        }
+        
+       
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                m[i][j]=1+r.nextInt(3);
+                
+
+               
+            }
+        }
+
+        
+
+
+        for(int i=0;i<3;i++)
+        {
+            m[1][i]=m[1][i]/m[1][0];
+        }
+            
+        for(int i=0;i<3;i++)
+        {
+            m[1][i]=(m[1][i]*m[0][0])-(m[0][i]);
+        }
+        
+        for(int i=0;i<3;i++)
+        {
+            m[2][i]=m[2][i]/m[2][0];
+        }
+        for(int i=0;i<3;i++)
+        {
+            m[2][i]=(m[2][i]*m[0][0])-(m[0][i]);
+        }
+
+        for(int i=0;i<3;i++)
+        {
+            m[2][i]=m[2][i]/m[2][1];
+        }
+
+        for(int i=0;i<3;i++)
+        {
+            m[2][i]=(m[2][i]*m[1][1])-(m[1][i]);
+        }
+       
+
+        
+        
+        System.out.println("Ust Ucgen Matris");
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                System.out.print(m[i][j]+" ");
+
+            }
+            System.out.println();
+        }
+        
+        
+        int matrixInvers[][] = {{m[1][1]*m[2][2]-m[1][2]*m[2][1],m[0][2]*m[2][1]-m[0][1]*m[2][2],m[0][1]*m[1][2]-m[0][2]*m[1][1]},
+                                {m[1][2]*m[2][0]-m[1][0]*m[2][2],m[0][0]*m[2][2]-m[0][2]*m[2][0],m[0][2]*m[1][0]-m[0][0]*m[1][2]},
+                                {m[1][0]*m[2][1]-m[1][1]*m[2][0],m[0][2]*m[2][0]-m[0][0]*m[2][1],m[0][0]*m[1][1]-m[0][1]*m[1][0]}};
+ 
+        System.out.println("3e 3lük matrix in inversi.");
+        for(int row=0; row<3; row++)
+        {
+            for(int column=0; column<3; column++)
+            {
+                System.out.printf("%3d",matrixInvers[row][column]);
+            }
+            System.out.print("\n");
+        }
+        
+        System.out.println("Bilinmeyen  Matris");
+       for(int i=0;i<matrixInvers.length;i++){
+            for(int j=0;j<sonuc[0].length;j++){
+                for(int k=0;k<sonuc.length;k++){
+                    bilinmeyen[i][j]=bilinmeyen[i][j]+sonuc[k][j]*matrixInvers[i][k];
+                }
+            }
+        }
+
+        
+        
+        
+           for(int row=0; row<3; row++)
+        {
+            for(int column=0; column<1; column++)
+            {
+                System.out.printf("%3d",bilinmeyen[row][column]);
+            }
+            System.out.print("\n");
+        }
+    }
+}
